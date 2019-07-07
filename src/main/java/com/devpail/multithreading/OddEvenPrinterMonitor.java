@@ -23,7 +23,7 @@ public class OddEvenPrinterMonitor {
     /**
      *
      */
-    private static int max_num = 10;
+    private final int max_num = 10;
 
     /**
     * @Description: 定义打印方法，同步监视器对象
@@ -35,7 +35,7 @@ public class OddEvenPrinterMonitor {
     public void printjob(){
         synchronized (monitor) {
             //循环打印
-            while (count < OddEvenPrinterMonitor.max_num) {
+            while (count < max_num) {
                 try {
                     //打印完毕，count++
                     System.out.println(Thread.currentThread().getName() + ":" + ++count);
@@ -47,6 +47,7 @@ public class OddEvenPrinterMonitor {
                     e.printStackTrace();
                 }
             }
+            monitor.notifyAll();
         }
     }
 
@@ -66,7 +67,7 @@ public class OddEvenPrinterMonitor {
         singleThreadPool.execute(printer::printjob);
         //开启第二个线程
         singleThreadPool.execute(printer::printjob);
-
+        singleThreadPool.shutdown();
 
 
         //第一个线程启动
