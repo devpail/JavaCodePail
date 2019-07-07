@@ -14,11 +14,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class OddEvenPrinter {
     private static  Object mointer = new Object();
     private static  int i=0;
-    static class Printer implements Runnable{
-        @Override
+    static class Printer{
         public void run() {
             synchronized (mointer){
-
                 try {
                     while(i<10){
                         System.out.println(Thread.currentThread().getName()+":"+ ++i);
@@ -34,16 +32,9 @@ public class OddEvenPrinter {
 
     public static void main(String[] args) {
 
-        //ExecutorService threadPool = Executors.newFixedThreadPool(2);
-        //ThreadPoolExecutor executor = new ThreadPoolExecutor(6, 10, 5, TimeUnit.SECONDS, new SynchronousQueue<Runnable>());
-        //核心线程数6
-        //线程池线程数3
-        //队列任务数0
-        //ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor();
-        Printer oddPrinter = new Printer();
-        Thread oddThread = new Thread(oddPrinter,"oddPrinter---");
-        Printer evenPrinter = new Printer();
-        Thread evenThread = new Thread(evenPrinter,"evenPrinter--");
+        Printer printer = new Printer();
+        Thread oddThread = new Thread(printer::run,"oddPrinter---");
+        Thread evenThread = new Thread(printer::run,"evenPrinter--");
         oddThread.start();
         evenThread.start();
     }
