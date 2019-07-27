@@ -29,7 +29,7 @@ public class SingletonObject6 {
 
     public static void main(String[] args) {
 
-        IntStream.rangeClosed(1,100).forEach(
+        IntStream.rangeClosed(1,1000).forEach(
                 i->new Thread(String.valueOf(i)){
                     @Override
                     public void run() {
