@@ -12,9 +12,11 @@ public class UserDaoProxyByExtend extends UserDaoImpl {
     public UserDaoProxyByExtend() {
 
     }
+
     public UserDaoProxyByExtend(UserDaoImpl conreteUserDAO) {
         this.conreteUserDao = conreteUserDAO;
     }
+
     @Override
     public boolean insert(String name, int age) {
         System.out.println("before insert handle some logic by extend");

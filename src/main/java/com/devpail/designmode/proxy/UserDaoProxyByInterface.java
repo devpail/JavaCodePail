@@ -13,9 +13,11 @@ public class UserDaoProxyByInterface implements UserDao {
     public UserDaoProxyByInterface() {
 
     }
+
     public UserDaoProxyByInterface(UserDaoImpl conreteUserDAO) {
         this.conreteUserDao = conreteUserDAO;
     }
+
     @Override
     public boolean insert(String name, int age) {
         System.out.println("before insert handle some logic by interface");

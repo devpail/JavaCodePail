@@ -17,7 +17,7 @@ public class CglibDemo implements MethodInterceptor {
 
     private Object target;
 
-    public Object newInstance(Object source){
+    public Object newInstance(Object source) {
         target = source;
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(this.target.getClass());
@@ -32,6 +32,7 @@ public class CglibDemo implements MethodInterceptor {
         //Object value = methodProxy.invoke(o, objects);
         return value;
     }
+
     public static void main(String[] args) {
         System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\\\classes");
         InfoDemo instance = (InfoDemo) new CglibDemo().newInstance(new InfoDemo());
@@ -40,7 +41,7 @@ public class CglibDemo implements MethodInterceptor {
 }
 
 class InfoDemo {
-    public void welcome (String person){
+    public void welcome(String person) {
         System.out.println("welcome :" + person);
     }
 }

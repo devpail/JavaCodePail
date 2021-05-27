@@ -10,7 +10,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean insert(String name, int age) {
-        System.out.println("insert to database name="+name +" age="+age);
+        System.out.println("insert to database name=" + name + " age=" + age);
         return true;
     }
 }

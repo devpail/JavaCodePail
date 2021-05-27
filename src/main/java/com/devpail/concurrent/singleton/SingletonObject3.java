@@ -10,14 +10,16 @@ package com.devpail.concurrent.singleton;
 public class SingletonObject3 {
     private static SingletonObject3 instance;
 
-    private SingletonObject3(){}
+    private SingletonObject3() {
+    }
 
     /**
      * synchronized每次加锁影响性能
+     *
      * @return
      */
-    public synchronized  static SingletonObject3 getInstance(){
-        if(instance == null){
+    public synchronized static SingletonObject3 getInstance() {
+        if (instance == null) {
             instance = new SingletonObject3();
         }
         return instance;

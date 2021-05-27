@@ -18,7 +18,7 @@ public class OddEvenPrinterMonitor {
     private final Object monitor = new Object();
     /**
      * 定义打印数量
-     * */
+     */
     private volatile int count = 0;
     /**
      *
@@ -26,13 +26,13 @@ public class OddEvenPrinterMonitor {
     private final int max_num = 10;
 
     /**
-    * @Description: 定义打印方法，同步监视器对象
-    * @Author: bingo
-    * @Date: 19-7-7 下午6:33
-    * @Param: []
-    * @return: void
-    */
-    public void printjob(){
+     * @Description: 定义打印方法，同步监视器对象
+     * @Author: bingo
+     * @Date: 19-7-7 下午6:33
+     * @Param: []
+     * @return: void
+     */
+    public void printjob() {
         synchronized (monitor) {
             //循环打印
             while (count < max_num) {
@@ -52,11 +52,11 @@ public class OddEvenPrinterMonitor {
     }
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         ThreadFactory threadFactory = new ThreadFactoryBuilder()
                 .setNameFormat("奇数偶数打印-pool-%d").build();
-        ExecutorService singleThreadPool = new ThreadPoolExecutor(2,2,0L,TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(1024),threadFactory,new ThreadPoolExecutor.AbortPolicy());
+        ExecutorService singleThreadPool = new ThreadPoolExecutor(2, 2, 0L, TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(1024), threadFactory, new ThreadPoolExecutor.AbortPolicy());
 
         //ThreadPoolExecutor executor = new ThreadPoolExecutor(2,2,5 , TimeUnit.SECONDS,new LinkedBlockingQueue<>());
 

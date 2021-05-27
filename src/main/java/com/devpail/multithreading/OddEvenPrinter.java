@@ -12,14 +12,15 @@ import java.util.concurrent.ThreadPoolExecutor;
  **/
 
 public class OddEvenPrinter {
-    private static  Object mointer = new Object();
-    private static  int i=0;
-    static class Printer{
+    private static Object mointer = new Object();
+    private static int i = 0;
+
+    static class Printer {
         public void run() {
-            synchronized (mointer){
+            synchronized (mointer) {
                 try {
-                    while(i<10){
-                        System.out.println(Thread.currentThread().getName()+":"+ ++i);
+                    while (i < 10) {
+                        System.out.println(Thread.currentThread().getName() + ":" + ++i);
                         mointer.notifyAll();
                         mointer.wait();
                     }
@@ -33,8 +34,8 @@ public class OddEvenPrinter {
     public static void main(String[] args) {
 
         Printer printer = new Printer();
-        Thread oddThread = new Thread(printer::run,"oddPrinter---");
-        Thread evenThread = new Thread(printer::run,"evenPrinter--");
+        Thread oddThread = new Thread(printer::run, "oddPrinter---");
+        Thread evenThread = new Thread(printer::run, "evenPrinter--");
         oddThread.start();
         evenThread.start();
     }

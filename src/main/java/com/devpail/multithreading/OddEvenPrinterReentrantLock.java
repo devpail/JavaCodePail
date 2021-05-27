@@ -29,18 +29,18 @@ public class OddEvenPrinterReentrantLock {
 
 
     /**
-    * Description: 打印线程任务
-    * Author: bingo
-    * Date: 19-7-7 下午7:58
-    * Param: []
-    * return: void
-    */
-    private void printjob(){
+     * Description: 打印线程任务
+     * Author: bingo
+     * Date: 19-7-7 下午7:58
+     * Param: []
+     * return: void
+     */
+    private void printjob() {
         int maxNum = 10;
         lock.lock();
         while (count < maxNum) {
             try {
-                System.out.println(Thread.currentThread().getName()+":"+ ++count);
+                System.out.println(Thread.currentThread().getName() + ":" + ++count);
                 condition.signalAll();
                 condition.await();
             } catch (InterruptedException e) {
@@ -56,8 +56,8 @@ public class OddEvenPrinterReentrantLock {
 
         ThreadFactory factory = new ThreadFactoryBuilder()
                 .setNameFormat("奇数偶数打印-pool-%d").build();
-        ExecutorService threadPool = new ThreadPoolExecutor(3,3,0L, TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(1024),factory,new ThreadPoolExecutor.AbortPolicy());
+        ExecutorService threadPool = new ThreadPoolExecutor(3, 3, 0L, TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(1024), factory, new ThreadPoolExecutor.AbortPolicy());
         for (int i = 0; i < 3; i++) {
             threadPool.execute(printer::printjob);
         }
@@ -71,7 +71,6 @@ public class OddEvenPrinterReentrantLock {
         // Thread thread2 = new Thread(printer::printjob);
         // thread2.start();
     }
-
 
 
 }

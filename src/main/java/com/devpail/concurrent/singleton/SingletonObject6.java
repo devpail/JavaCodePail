@@ -11,9 +11,10 @@ import java.util.stream.IntStream;
  */
 public class SingletonObject6 {
 
-    private SingletonObject6(){}
+    private SingletonObject6() {
+    }
 
-    private static class InstanceHolder{
+    private static class InstanceHolder {
         /**
          * static 只会初始化一次，调用的时候再加载
          */
@@ -23,14 +24,14 @@ public class SingletonObject6 {
     /**
      * 保证懒加载，线程安全，效率高
      */
-    public static SingletonObject6 getInstance(){
+    public static SingletonObject6 getInstance() {
         return InstanceHolder.instance;
     }
 
     public static void main(String[] args) {
 
-        IntStream.rangeClosed(1,1000).forEach(
-                i->new Thread(String.valueOf(i)){
+        IntStream.rangeClosed(1, 1000).forEach(
+                i -> new Thread(String.valueOf(i)) {
                     @Override
                     public void run() {
                         System.out.println(SingletonObject6.getInstance());

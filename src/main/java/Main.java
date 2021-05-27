@@ -7,7 +7,7 @@ public class Main {
         System.out.println(s);
         ClassUtil.printClassMessage(s);
 
-        Integer n1 = 1 ;
+        Integer n1 = 1;
         ClassUtil.printClassMessage(n1);
 
     }

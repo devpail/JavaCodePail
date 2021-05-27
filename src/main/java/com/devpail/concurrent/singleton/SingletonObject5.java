@@ -15,15 +15,16 @@ public class SingletonObject5 {
      */
     private static volatile SingletonObject5 instance;
 
-    private SingletonObject5(){}
+    private SingletonObject5() {
+    }
 
     /**
      * 双重校验锁   但是可能会引起空指针异常
      */
-    public static SingletonObject5 getInstance(){
-        if(instance == null){
-            synchronized (SingletonObject5.class){
-                if(instance == null){
+    public static SingletonObject5 getInstance() {
+        if (instance == null) {
+            synchronized (SingletonObject5.class) {
+                if (instance == null) {
                     instance = new SingletonObject5();
                 }
             }

@@ -18,7 +18,7 @@ public class MyInvocationHandler implements InvocationHandler {
      * 构造方法
      *
      * @param
-     * */
+     */
     public MyInvocationHandler(Object target) {
         super();
         this.target = target;

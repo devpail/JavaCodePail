@@ -58,7 +58,7 @@ public class CglibProxy implements MethodInterceptor {
  **/
 
 class SayHello {
-    public void say(){
+    public void say() {
         System.out.println("hello everyone");
     }
 }

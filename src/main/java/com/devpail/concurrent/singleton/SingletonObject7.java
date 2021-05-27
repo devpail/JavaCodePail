@@ -10,29 +10,29 @@ import java.util.stream.IntStream;
  * @createTime 2019年07月07日 21:01:00
  */
 public class SingletonObject7 {
-    private SingletonObject7(){
+    private SingletonObject7() {
 
     }
 
     /**
      * 枚举类型是线程安全的，构造函数只会被构造一次
      */
-    private enum Singleton{
+    private enum Singleton {
         //单例对象
         INSTANCE;
 
         private final SingletonObject7 instance;
 
-        Singleton(){
+        Singleton() {
             instance = new SingletonObject7();
         }
 
-        public SingletonObject7 getInstance(){
+        public SingletonObject7 getInstance() {
             return instance;
         }
     }
 
-    public static SingletonObject7 getInstance(){
+    public static SingletonObject7 getInstance() {
         return Singleton.INSTANCE.getInstance();
     }
 
@@ -41,7 +41,7 @@ public class SingletonObject7 {
                 new Thread(String.valueOf(i)) {
                     @Override
                     public void run() {
-                        System.out.println(Thread.currentThread().getName()+":"+SingletonObject7.getInstance());
+                        System.out.println(Thread.currentThread().getName() + ":" + SingletonObject7.getInstance());
                     }
                 }.start()
         );
